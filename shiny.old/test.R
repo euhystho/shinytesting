@@ -1,0 +1,1 @@
+shinyAppTemplate("\test")

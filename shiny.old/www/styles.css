@@ -1,0 +1,17 @@
+/* Custom styles for magic_image */
+.magic-image-container img {
+  max-height: 125%;
+  height: auto;
+  object-fit: fill;
+  }
+.magic-image-container {
+  height: 67vh;
+}
+/* Custom styles for venezuela_image */
+.venezuela-image-container img {
+  object-fit: contain;
+}
+/* Custom styles for venezuela_image */
+.venezuela-image-container {
+  height: 135vh;
+}
