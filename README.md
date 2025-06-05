@@ -71,22 +71,10 @@ shiny.old/
     └── styles.css
 ```
 
-## 🎯 Future Enhancements
-
-- [ ] Machine learning predictions for democratic transitions
-- [ ] Additional economic indicators (inequality, trade)
-- [ ] Adding the Human Freedom Index
-- [ ] Real-time data updates via APIs
-- [ ] Export functionality for analysis results
-- [ ] Multi-language support
-
 ## 🤝 Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
 
-## 📧 Contact
-
-For questions or collaboration opportunities, reach out via [LinkedIn](your-linkedin-profile) or [email](your-email).
 
 ---
 
