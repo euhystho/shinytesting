@@ -1,0 +1,23 @@
+Package: shinytesting
+Title: Shiny Testing App
+Version: 0.0.0.9000
+Description: Interactive Shiny application for exploring economic and democracy data.
+Imports:
+    bslib,
+    bsicons,
+    data.table,
+    dplyr,
+    ggplot2,
+    ggstatsplot,
+    memoise,
+    patchwork,
+    plotly,
+    progress,
+    RColorBrewer,
+    shiny,
+    shinyjs,
+    shinyWidgets,
+    stringr,
+    thematic,
+    tibble,
+    tidyr

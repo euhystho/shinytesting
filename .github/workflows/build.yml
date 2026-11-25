@@ -1,0 +1,11 @@
+name: Deploy app
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  build:
+    uses: posit-dev/r-shinylive/.github/workflows/deploy-app.yaml@actions-v1
+    with:
+      app-dir: shiny.old
