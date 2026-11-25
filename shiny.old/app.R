@@ -11,7 +11,6 @@ library(tidyr)
 library(stringr)
 library(tibble)
 library(ggplot2)
-library(ggstatsplot)
 library(patchwork)
 library(RColorBrewer)
 library(data.table)
@@ -286,15 +285,29 @@ server <- function(input, output, session){
     })
 # Memoisation corner :3
     memoise_plot <- memoise(function(inv_data){
-        ggbetweenstats(
-          data = inv_data,
-          x = period,
-          y = y,
-          title = "Comparing the Pre and Post Intervention Periods",
-          xlab = "Period",
-          ylab = "Intervention Amounts",
-          ggplot.component = list(theme(text = element_text(size = 14)))
-        )
+        # Plain ggplot2 replacement for ggstatsplot::ggbetweenstats().
+        # ggstatsplot requires a newer rlang than the one webR/shinylive
+        # preloads, which made the app fail to start.
+        tt <- t.test(y ~ period, data = inv_data)
+        means <- aggregate(y ~ period, data = inv_data, FUN = mean)
+        ggplot(inv_data, aes(x = period, y = y, fill = period)) +
+          geom_violin(alpha = 0.2, colour = NA) +
+          geom_boxplot(width = 0.2, alpha = 0.5, outlier.shape = NA) +
+          geom_jitter(aes(colour = period), width = 0.1, alpha = 0.6, size = 2) +
+          geom_point(data = means, aes(x = period, y = y),
+                     colour = "darkred", size = 4, inherit.aes = FALSE) +
+          geom_label(data = means,
+                     aes(x = period, y = y, label = paste0("mean = ", round(y, 2))),
+                     nudge_x = 0.3, size = 4, inherit.aes = FALSE) +
+          labs(
+            title = "Comparing the Pre and Post Intervention Periods",
+            subtitle = sprintf("Welch's t(%.2f) = %.2f, p = %.3g",
+                               tt$parameter, tt$statistic, tt$p.value),
+            x = "Period",
+            y = "Intervention Amounts"
+          ) +
+          theme_minimal() +
+          theme(text = element_text(size = 14), legend.position = "none")
       })
     
     base_plot <- reactive({

@@ -8,7 +8,6 @@ Imports:
     data.table,
     dplyr,
     ggplot2,
-    ggstatsplot,
     memoise,
     patchwork,
     plotly,
