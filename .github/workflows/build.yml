@@ -7,5 +7,9 @@ on:
 jobs:
   build:
     uses: posit-dev/r-shinylive/.github/workflows/deploy-app.yaml@actions-v1
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
     with:
       app-dir: shiny.old
